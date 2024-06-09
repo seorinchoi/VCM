@@ -22,4 +22,12 @@ default_hooks = dict(
     param_scheduler=dict(type='ParamSchedulerHook'),
     checkpoint=dict(type='CheckpointHook', by_epoch=False, interval=16000),
     sampler_seed=dict(type='DistSamplerSeedHook'),
-    visualization=dict(type='SegVisualizationHook'))
+    visualization=dict(type='SegVisualizationHook'),
+    early_stopping=dict(
+        type='EarlyStoppingHook',
+        monitor='val_loss',  # Metric to monitor
+        patience=10,  # Number of epochs to wait for improvement
+        interval=1,  # Check interval
+        min_delta=0.001 
+    )
+)

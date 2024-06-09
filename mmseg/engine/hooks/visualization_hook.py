@@ -37,7 +37,7 @@ class SegVisualizationHook(Hook):
     """
 
     def __init__(self,
-                 draw: bool = False,
+                 draw: bool = True,
                  interval: int = 50,
                  show: bool = False,
                  wait_time: float = 0.,
