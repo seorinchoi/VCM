@@ -15,7 +15,7 @@ param_scheduler = [
 
 # training schedule for 80 epochs
 train_cfg = dict(
-    type='EpochBasedTrainLoop', max_epochs=300, val_interval=10)  # validate every 10 epochs
+    type='EpochBasedTrainLoop', max_epochs=430, val_interval=1)  # validate every 10 epochs
 val_cfg = dict(type='ValLoop')
 test_cfg = dict(type='TestLoop')
 
@@ -30,8 +30,8 @@ default_hooks = dict(
     visualization=dict(type='SegVisualizationHook'),
     early_stopping=dict(
         type='EarlyStoppingHook',
-        monitor='val_loss',  # Metric to monitor
+        monitor='loss',  # Metric to monitor
         patience=10,  # Number of epochs to wait for improvement
-        min_delta=0.001  # Minimum change to qualify as an improvement
+        min_delta=0.01  # Minimum change to qualify as an improvement
     )
 )

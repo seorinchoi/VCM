@@ -1,6 +1,9 @@
 # 데이터셋 타입과 경로를 수정
 dataset_type = 'KiTS21Datasets'
 data_root = '/home/modan9012/mmsegmentation/datasets/'
+test_data_root = './datasets/test-small/'
+test_img_dir = 'images'
+test_mask_dir = 'masks'
 img_dir = 'images/'
 ann_dir = 'labels'
 
@@ -70,7 +73,26 @@ val_dataloader = dict(
     sampler=dict(shuffle=False, type='DefaultSampler')
 )
 
-test_dataloader = val_dataloader
+test_dataloader =  dict(
+    batch_size=1,
+    dataset=dict(
+        type='KiTS21Datasets',
+        data_root=test_data_root,
+        data_prefix=dict(img_path=test_img_dir, seg_map_path=test_mask_dir),
+        pipeline=val_pipeline,
+        reduce_zero_label=False,  # 여기서 reduce_zero_label 설정
+    ),
+    num_workers=4,
+    persistent_workers=True,
+    sampler=dict(shuffle=False, type='DefaultSampler')
+)
 
 val_evaluator = dict(type='IoUMetric', iou_metrics=['mIoU'])
-test_evaluator = val_evaluator
+test_evaluator = dict(
+    format_only= True,
+    keep_results=True,
+    output_dir='./work_dirs/Swin-Seg/batch24lr0.01/format_results',
+    iou_metrics=[
+        'mIoU',
+    ],
+    type='IoUMetric')

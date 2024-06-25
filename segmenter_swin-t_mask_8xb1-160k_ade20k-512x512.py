@@ -10,6 +10,8 @@ data_preprocessor = dict(size=crop_size)
 
 checkpoint = 'https://download.openmmlab.com/mmsegmentation/v0.5/pretrain/swin/swin_tiny_patch4_window7_224_20220317-1cdeb081.pth'
 
+#checkpoint = './work_dirs/Swin-Seg/batch8lr0.001/epoch_280.pth'
+
 
 model = dict(
     data_preprocessor=data_preprocessor,
@@ -41,10 +43,9 @@ model = dict(
 
 train_dataloader = dict(batch_size=24) #batch-size
 val_dataloader = dict(batch_size=1)
-test_dataloader = val_dataloader
 
 
-optimizer = dict(lr=0.01, weight_decay=0.0) #learning-rate
+optimizer = dict(lr=0.001, weight_decay=0.0) #learning-rate
 optim_wrapper = dict(type='OptimWrapper', optimizer=optimizer)
 
 

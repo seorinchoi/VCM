@@ -35,14 +35,14 @@ default_hooks = dict(
     timer=dict(type='IterTimerHook'),  # IterTimerHook을 유지
     logger=dict(type='LoggerHook', interval=10, log_metric_by_epoch=True),
     param_scheduler=dict(type='ParamSchedulerHook'),
-    checkpoint=dict(type='CheckpointHook', by_epoch=True, interval=50),  # save checkpoint every 10 epochs
+    checkpoint=dict(type='CheckpointHook', by_epoch=True, interval=10),  # save checkpoint every 10 epochs
     sampler_seed=dict(type='DistSamplerSeedHook'),
     visualization=dict(type='SegVisualizationHook'),
     early_stopping=dict(
         type='EarlyStoppingHook',
-        monitor='val_loss',  # Metric to monitor
+        monitor='mIoU',  # Metric to monitor
         patience=10,  # Number of epochs to wait for improvement
         interval=1,  # Check interval
-        min_delta=0.001  # Minimum change to qualify as an improvement
+        min_delta=0.01  # Minimum change to qualify as an improvement
     )
 )
