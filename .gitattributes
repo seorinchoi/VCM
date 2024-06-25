@@ -1,2 +1,7 @@
 datasets/train-kid-small.zip filter=lfs diff=lfs merge=lfs -text
 driver_installer.run filter=lfs diff=lfs merge=lfs -text
+include/** filter=lfs diff=lfs merge=lfs -text
+swin_tiny_patch4_window7_224_20220317-1cdeb081.pth filter=lfs diff=lfs merge=lfs -text
+work_dirs/Swin-Seg/batch24lr0.005/epoch_10.pth filter=lfs diff=lfs merge=lfs -text
+work_dirs/Swin-Seg/batch24lr0.005/epoch_20.pth filter=lfs diff=lfs merge=lfs -text
+work_dirs/Swin-Seg/batch240.001/epoch_400.pth filter=lfs diff=lfs merge=lfs -text
