@@ -1,6 +1,6 @@
 # 데이터셋 타입과 경로를 수정
 dataset_type = 'KiTS21Datasets'
-data_root = '/home/modan9012/mmsegmentation/datasets/'
+data_root = './datasets/'
 test_data_root = './datasets/test-small/'
 test_img_dir = 'images'
 test_mask_dir = 'masks'

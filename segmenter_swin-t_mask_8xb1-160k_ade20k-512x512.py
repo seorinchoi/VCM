@@ -41,11 +41,11 @@ model = dict(
     test_cfg=dict(mode='slide', crop_size=(256,256), stride=(128, 128)),
 )
 
-train_dataloader = dict(batch_size=24) #batch-size
+train_dataloader = dict(batch_size=8) #batch-size
 val_dataloader = dict(batch_size=1)
 
 
-optimizer = dict(lr=0.001, weight_decay=0.0) #learning-rate
+optimizer = dict(lr=0.005, weight_decay=0.0) #learning-rate
 optim_wrapper = dict(type='OptimWrapper', optimizer=optimizer)
 
 

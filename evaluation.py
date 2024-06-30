@@ -20,9 +20,9 @@ def evaluation(datanum, xmin, ymin, xmax, ymax):
 
     image_dir = "./datasets/test-small/images/"
     gt_dir = "./datasets/test-small/masks/"
-    pred_dir = "./work_dirs/Swin-Seg/batch24lr0.005/format_results"
-    result_dir = "./work_dirs/Swin-Seg/batch24lr0.005/eval_results"
-    resultimg_dir = "./work_dirs/Swin-Seg/batch24lr0.005/eval_results/img"
+    pred_dir = "./work_dirs/Swin-Seg/batch24lr0.0005/format_results"
+    result_dir = "./work_dirs/Swin-Seg/batch24lr0.0005/eval_results"
+    resultimg_dir = "./work_dirs/Swin-Seg/batch24lr0.0005/eval_results/img"
 
     if not os.path.exists(result_dir):
         os.makedirs(result_dir)
