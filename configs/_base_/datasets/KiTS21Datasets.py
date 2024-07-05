@@ -87,12 +87,3 @@ test_dataloader =  dict(
     sampler=dict(shuffle=False, type='DefaultSampler')
 )
 
-val_evaluator = dict(type='IoUMetric', iou_metrics=['mIoU'])
-test_evaluator = dict(
-    format_only= True,
-    keep_results=True,
-    output_dir='./work_dirs/Swin-Seg/batch24lr0.01/format_results',
-    iou_metrics=[
-        'mIoU',
-    ],
-    type='IoUMetric')

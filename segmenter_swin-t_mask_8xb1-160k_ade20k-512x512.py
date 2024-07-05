@@ -41,12 +41,21 @@ model = dict(
     test_cfg=dict(mode='slide', crop_size=(256,256), stride=(128, 128)),
 )
 
-train_dataloader = dict(batch_size=8) #batch-size
+train_dataloader = dict(batch_size=24) #batch-size
 val_dataloader = dict(batch_size=1)
 
 
-optimizer = dict(lr=0.005, weight_decay=0.0) #learning-rate
+optimizer = dict(lr=0.01, weight_decay=0.0) #learning-rate
 optim_wrapper = dict(type='OptimWrapper', optimizer=optimizer)
+
+val_evaluator = dict(type='CustomDiceMetric', target_class_index=1,iou_metrics=['mIoU', 'mDice'])
+test_evaluator = dict(
+    format_only= True,
+    keep_results=True,
+    output_dir='./work_dirs/Swin-Seg/batch24lr0.01/format_results',
+    iou_metrics=['mIoU','mDice'],
+    target_class_index=1,
+    type='CustomDiceMetric')
 
 
 

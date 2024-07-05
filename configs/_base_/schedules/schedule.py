@@ -30,8 +30,9 @@ default_hooks = dict(
     visualization=dict(type='SegVisualizationHook'),
     early_stopping=dict(
         type='EarlyStoppingHook',
-        monitor='mIoU',  # Metric to monitor
+        monitor='target_class_dice',  # Metric to monitor
         patience=30,  # Number of epochs to wait for improvement
-        min_delta=0.01  # Minimum change to qualify as an improvement
+        min_delta=0.01,  # Minimum change to qualify as an improvement
+        rule = 'greater'
     )
 )
