@@ -31,7 +31,7 @@ default_hooks = dict(
     early_stopping=dict(
         type='EarlyStoppingHook',
         monitor='target_class_dice',  # Metric to monitor
-        patience=30,  # Number of epochs to wait for improvement
+        patience=10,  # Number of epochs to wait for improvement
         min_delta=0.01,  # Minimum change to qualify as an improvement
         rule = 'greater'
     )
