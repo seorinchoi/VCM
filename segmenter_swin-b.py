@@ -12,7 +12,7 @@ checkpoint = 'hhttps://download.openmmlab.com/mmsegmentation/v0.5/pretrain/swin/
 
 model = dict(
     data_preprocessor=data_preprocessor,
-    # backbone Swin-tiny-patch4-window7으로 수정
+    # backbone Swin-base-patch4-window7으로 수정
     backbone=dict(
         init_cfg=dict(
             checkpoint= checkpoint,
@@ -21,7 +21,7 @@ model = dict(
         embed_dims=128,
         depths=[2, 2, 18, 2],
         num_heads=[4, 8, 16, 32],
-        window_size=12),
+        window_size=7),
     decode_head=dict(
         type='SegmenterMaskTransformerHead',
         in_channels=1024,
