@@ -2,7 +2,7 @@ _base_ = [
     'configs/_base_/models/segmenter_swin.py',
     'configs/_base_/datasets/ade20k.py',
     'configs/_base_/default_runtime.py',
-    'configs/_base_/schedules/schedule_160k.py'
+    'configs/_base_/schedules/schedule.py'
 ]
 
 crop_size = (512, 512)
