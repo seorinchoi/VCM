@@ -1,6 +1,6 @@
 _base_ = [
     'configs/_base_/models/segmenter_swin.py',
-    'configs/_base_/datasets/ade20k.py',
+    'configs/_base_/datasets/KiTS21Datasets.py',
     'configs/_base_/default_runtime.py',
     'configs/_base_/schedules/schedule.py'
 ]
@@ -8,7 +8,7 @@ _base_ = [
 crop_size = (512, 512)
 data_preprocessor = dict(size=crop_size)
 
-checkpoint = 'hhttps://download.openmmlab.com/mmsegmentation/v0.5/pretrain/swin/swin_base_patch4_window7_224_20220317-e9b98025.pth'
+checkpoint = 'https://download.openmmlab.com/mmsegmentation/v0.5/pretrain/swin/swin_base_patch4_window7_224_20220317-e9b98025.pth'
 
 model = dict(
     data_preprocessor=data_preprocessor,
