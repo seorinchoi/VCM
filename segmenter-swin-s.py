@@ -8,9 +8,9 @@ _base_ = [
 crop_size = (256, 256)
 data_preprocessor = dict(size=crop_size)
 
-checkpoint = 'https://download.openmmlab.com/mmsegmentation/v0.5/pretrain/swin/swin_small_patch4_window7_224_20220317-7ba6d6dd.pth'
+#checkpoint = 'https://download.openmmlab.com/mmsegmentation/v0.5/pretrain/swin/swin_small_patch4_window7_224_20220317-7ba6d6dd.pth'
 
-
+checkpoint = '/content/drive/MyDrive/work_dirs/batch32lr0.01/epoch_120.pth'
 
 model = dict(
     data_preprocessor=data_preprocessor,
@@ -51,10 +51,9 @@ val_evaluator = dict(type='CustomDiceMetric', target_class_index=1,iou_metrics=[
 test_evaluator = dict(
     format_only= True,
     keep_results=True,
-    output_dir='./work_dirs/Swin-Seg/batch32lr0.01/format_results',
+    output_dir='/content/drive/MyDrive/work_dirs/batch32lr0.01/format_results',
     iou_metrics=['mIoU','mDice'],
-    target_class_index=1,
-    type='CustomDiceMetric')
+    type='IoUMetric')
 
 
 
