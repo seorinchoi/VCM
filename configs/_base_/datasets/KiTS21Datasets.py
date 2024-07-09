@@ -26,6 +26,10 @@ val_pipeline = [
     dict(type='LoadAnnotations', reduce_zero_label=False),  
     dict(type='PackSegInputs'),
 ]
+
+# test 파이프라인 설정
+test_pipeline = val_pipeline
+
 img_ratios = [0.5, 0.75, 1.0, 1.25, 1.5, 1.75]
 tta_pipeline = [
     dict(type='LoadImageFromFile', backend_args=None),
@@ -79,7 +83,7 @@ test_dataloader =  dict(
         type='KiTS21Datasets',
         data_root=test_data_root,
         data_prefix=dict(img_path=test_img_dir, seg_map_path=test_mask_dir),
-        pipeline=val_pipeline,
+        pipeline=test_pipeline,
         reduce_zero_label=False,  # 여기서 reduce_zero_label 설정
     ),
     num_workers=4,
