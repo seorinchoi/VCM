@@ -14,7 +14,7 @@ checkpoint = 'https://download.openmmlab.com/mmsegmentation/v0.5/pretrain/swin/s
 
 model = dict(
     data_preprocessor=data_preprocessor,
-    # backbone Swin-tiny-patch4-window7으로 수정
+    # backbone Swin-small-patch4-window7으로 수정
     backbone=dict(
         init_cfg=dict(type='Pretrained', checkpoint=checkpoint),
         embed_dims=96,
@@ -37,6 +37,8 @@ model = dict(
         loss_decode=dict(
             type='CrossEntropyLoss', use_sigmoid=False, loss_weight=1.0),
     ),
+    pretrained=
+    'https://download.openmmlab.com/mmsegmentation/v0.5/pretrain/segmenter/vit_tiny_p16_384_20220308-cce8c795.pth',
     test_cfg=dict(mode='slide', crop_size=(256,256), stride=(128, 128)),
 )
 
