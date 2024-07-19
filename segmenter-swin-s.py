@@ -52,7 +52,7 @@ test_evaluator = dict(
     format_only= True,
     keep_results=True,
     output_dir='/content/drive/MyDrive/work_dirs/batch32lr0.001/format_results',
-    iou_metrics=['mIoU','mDice'],
+    iou_metrics=['mIoU'],
     type='IoUMetric')
 
 
