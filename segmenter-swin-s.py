@@ -37,8 +37,6 @@ model = dict(
         loss_decode=dict(
             type='CrossEntropyLoss', use_sigmoid=False, loss_weight=1.0),
     ),
-    pretrained=
-    'https://download.openmmlab.com/mmsegmentation/v0.5/pretrain/segmenter/vit_tiny_p16_384_20220308-cce8c795.pth',
     test_cfg=dict(mode='slide', crop_size=(256,256), stride=(128, 128)),
 )
 
@@ -46,14 +44,14 @@ train_dataloader = dict(batch_size=32) #batch-size
 val_dataloader = dict(batch_size=1)
 
 
-optimizer = dict(lr=0.001, weight_decay=0.0) #learning-rate
+optimizer = dict(lr=0.01, weight_decay=0.0) #learning-rate
 optim_wrapper = dict(type='OptimWrapper', optimizer=optimizer)
 
 val_evaluator = dict(type='CustomDiceMetric', target_class_index=1,iou_metrics=['mIoU', 'mDice'])
 test_evaluator = dict(
     format_only= True,
     keep_results=True,
-    output_dir='/content/drive/MyDrive/work_dirs/batch32lr0.001/format_results',
+    output_dir='/content/drive/MyDrive/work_dirs/batch32lr0.01/format_results',
     iou_metrics=['mIoU'],
     type='IoUMetric')
 
