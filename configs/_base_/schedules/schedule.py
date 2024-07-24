@@ -1,16 +1,11 @@
 # optimizer
 
 optim_wrapper = dict(
-    _delete_=True,
+    clip_grad=None,
     type='OptimWrapper',
     optimizer=dict(
         type='AdamW', lr=0.005, betas=(0.9, 0.999), weight_decay=0.01),
-    paramwise_cfg=dict(
-        custom_keys={
-            'absolute_pos_embed': dict(decay_mult=0.),
-            'relative_position_bias_table': dict(decay_mult=0.),
-            'norm': dict(decay_mult=0.)
-        }))
+)
 '''optimizer = dict(type='SGD', lr=0.001, momentum=0.9, weight_decay=0.0005)
 optim_wrapper = dict(type='OptimWrapper', optimizer=optimizer, clip_grad=None)'''
 
@@ -43,7 +38,7 @@ default_hooks = dict(
     early_stopping=dict(
         type='EarlyStoppingHook',
         monitor='target_class_dice',  # Metric to monitor
-        patience=10,  # Number of epochs to wait for improvement
+        patience=30,  # Number of epochs to wait for improvement
         min_delta=0.01,  # Minimum change to qualify as an improvement
         rule = 'greater'
     )
