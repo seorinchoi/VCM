@@ -1,13 +1,13 @@
 # optimizer
 
-optim_wrapper = dict(
+'''optim_wrapper = dict(
     clip_grad=None,
     type='OptimWrapper',
     optimizer=dict(
         type='AdamW', lr=0.005, betas=(0.9, 0.999), weight_decay=0.01),
-)
-'''optimizer = dict(type='SGD', lr=0.001, momentum=0.9, weight_decay=0.0005)
-optim_wrapper = dict(type='OptimWrapper', optimizer=optimizer, clip_grad=None)'''
+)'''
+optimizer = dict(type='SGD', lr=0.001, momentum=0.9, weight_decay=0.0005)
+optim_wrapper = dict(type='OptimWrapper', optimizer=optimizer, clip_grad=None)
 
 # learning policy
 param_scheduler = [
@@ -38,7 +38,7 @@ default_hooks = dict(
     early_stopping=dict(
         type='EarlyStoppingHook',
         monitor='target_class_dice',  # Metric to monitor
-        patience=30,  # Number of epochs to wait for improvement
+        patience=15,  # Number of epochs to wait for improvement
         min_delta=0.01,  # Minimum change to qualify as an improvement
         rule = 'greater'
     )
