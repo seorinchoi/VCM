@@ -1,13 +1,22 @@
-# optimizer
-
-'''optim_wrapper = dict(
+# optimizer - AdamW
+optim_wrapper = dict(
     clip_grad=None,
     type='OptimWrapper',
     optimizer=dict(
-        type='AdamW', lr=0.005, betas=(0.9, 0.999), weight_decay=0.01),
-)'''
+        betas=(
+            0.9,
+            0.999,
+        ), lr=6e-05, type='AdamW', weight_decay=0.01),
+    paramwise_cfg=dict(
+        custom_keys=dict(
+            absolute_pos_embed=dict(decay_mult=0.0),
+            norm=dict(decay_mult=0.0),
+            relative_position_bias_table=dict(decay_mult=0.0))))
+
+''' optimizer - SGD+Momentum
 optimizer = dict(type='SGD', lr=0.001, momentum=0.9, weight_decay=0.0005)
 optim_wrapper = dict(type='OptimWrapper', optimizer=optimizer, clip_grad=None)
+'''
 
 # learning policy
 param_scheduler = [
