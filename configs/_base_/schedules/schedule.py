@@ -22,16 +22,16 @@ optim_wrapper = dict(type='OptimWrapper', optimizer=optimizer, clip_grad=None)
 param_scheduler = [
     dict(
         type='PolyLR',
-        eta_min=1e-4,
+        eta_min=1e-3,
         power=0.9,
         begin=0,
-        end=80,  # 80 epochs
+        end=500,
         by_epoch=True)
 ]
 
 # training schedule for 80 epochs
 train_cfg = dict(
-    type='EpochBasedTrainLoop', max_epochs=470, val_interval=1)  # validate every 10 epochs
+    type='EpochBasedTrainLoop', max_epochs=700, val_interval=1)  # validate every 10 epochs
 val_cfg = dict(type='ValLoop')
 test_cfg = dict(type='TestLoop')
 
