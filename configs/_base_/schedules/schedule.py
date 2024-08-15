@@ -1,4 +1,4 @@
-# optimizer - AdamW
+'''# optimizer - AdamW
 optim_wrapper = dict(
     clip_grad=None,
     type='OptimWrapper',
@@ -11,12 +11,11 @@ optim_wrapper = dict(
         custom_keys=dict(
             absolute_pos_embed=dict(decay_mult=0.0),
             norm=dict(decay_mult=0.0),
-            relative_position_bias_table=dict(decay_mult=0.0))))
+            relative_position_bias_table=dict(decay_mult=0.0))))'''
 
-''' optimizer - SGD+Momentum
-optimizer = dict(type='SGD', lr=0.001, momentum=0.9, weight_decay=0.0005)
+# optimizer - SGD+Momentum
+optimizer = dict(type='SGD', lr=0.01, momentum=0.9, weight_decay=0.0005)
 optim_wrapper = dict(type='OptimWrapper', optimizer=optimizer, clip_grad=None)
-'''
 
 # learning policy
 param_scheduler = [
@@ -29,9 +28,9 @@ param_scheduler = [
         by_epoch=True)
 ]
 
-# training schedule for 80 epochs
+# training schedule for 500 epochs
 train_cfg = dict(
-    type='EpochBasedTrainLoop', max_epochs=700, val_interval=1)  # validate every 10 epochs
+    type='EpochBasedTrainLoop', max_epochs=500, val_interval=1)  # validate every 10 epochs
 val_cfg = dict(type='ValLoop')
 test_cfg = dict(type='TestLoop')
 
@@ -47,7 +46,7 @@ default_hooks = dict(
     early_stopping=dict(
         type='EarlyStoppingHook',
         monitor='target_class_dice',  # Metric to monitor
-        patience=30,  # Number of epochs to wait for improvement
+        patience=40,  # Number of epochs to wait for improvement
         min_delta=0.01,  # Minimum change to qualify as an improvement
         rule = 'greater'
     )
