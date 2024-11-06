@@ -40,7 +40,7 @@ default_hooks = dict(
     timer=dict(type='IterTimerHook'),  # IterTimerHook을 유지
     logger=dict(type='LoggerHook', log_metric_by_epoch=True, interval=1),
     param_scheduler=dict(type='ParamSchedulerHook'),
-    checkpoint=dict(type='CheckpointHook', by_epoch=True, interval=10),  # save checkpoint every 10 epochs
+    checkpoint=dict(type='CheckpointHook', by_epoch=True, interval=5),  # save checkpoint every 10 epochs
     sampler_seed=dict(type='DistSamplerSeedHook'),
     visualization=dict(type='SegVisualizationHook'),
     early_stopping=dict(

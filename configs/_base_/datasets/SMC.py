@@ -12,8 +12,8 @@ crop_size = (291,80)
 train_pipeline = [
     dict(type='LoadImageFromFile'),
     dict(type='LoadAnnotations', reduce_zero_label=False),
-    dict(type='RandomResize', scale=(256, 256), ratio_range=(0.5, 2.0), keep_ratio=True),
-    dict(type='RandomCrop', crop_size=(256, 256), cat_max_ratio=0.75),
+    dict(type='RandomResize', scale=(291, 80), ratio_range=(0.5, 2.0), keep_ratio=True),
+    dict(type='RandomCrop', crop_size=(291, 80), cat_max_ratio=0.75),
     dict(type='RandomFlip', prob=0.5),
     dict(type='PhotoMetricDistortion'),
     dict(type='PackSegInputs'),
@@ -22,7 +22,7 @@ train_pipeline = [
 # validation 파이프라인 설정
 val_pipeline = [
     dict(type='LoadImageFromFile'),
-    dict(type='Resize', scale=(256, 256), keep_ratio=True),
+    dict(type='Resize', scale=(291, 80), keep_ratio=True),
     dict(type='LoadAnnotations', reduce_zero_label=False),  
     dict(type='PackSegInputs'),
 ]

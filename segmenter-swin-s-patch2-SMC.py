@@ -36,7 +36,7 @@ model = dict(
         loss_decode=dict(
             type='CrossEntropyLoss', use_sigmoid=False, loss_weight=1.0),
     ),
-    test_cfg=dict(mode='slide', crop_size=(256,256), stride=(128, 128)),
+    test_cfg=dict(mode='slide', crop_size=crop_size, stride=(145, 40)),
 )
 
 train_dataloader = dict(batch_size=8) #batch-size
