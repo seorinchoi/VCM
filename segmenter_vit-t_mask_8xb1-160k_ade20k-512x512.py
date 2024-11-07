@@ -19,6 +19,19 @@ model = dict(
         num_heads=3,
         embed_dims=192))
 
+train_dataloader = dict(batch_size=8) #batch-size
+val_dataloader = dict(batch_size=1)
+
+
+val_evaluator = dict(type='CustomDiceMetric', target_class_index=1,iou_metrics=['mIoU', 'mDice'])
+test_evaluator = dict(
+    format_only= True,
+    keep_results=True,
+    output_dir='',
+    iou_metrics=['mIoU'],
+    type='IoUMetric')
+
+
 optimizer = dict(lr=0.001, weight_decay=0.0)
 optim_wrapper = dict(type='OptimWrapper', optimizer=optimizer)
 train_dataloader = dict(
