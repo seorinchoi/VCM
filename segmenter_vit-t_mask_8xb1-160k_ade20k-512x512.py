@@ -16,8 +16,8 @@ model = dict(
         embed_dims=192,
         final_norm=True,
         img_size=(
-            512,
-            512,
+            291,
+            80,
         ),
         in_channels=3,
         interpolate_mode='bicubic',
@@ -27,19 +27,7 @@ model = dict(
         patch_size=8, #patch size 8 
         type='VisionTransformer',
         with_cls_token=True),
-    data_preprocessor=dict(
-        bgr_to_rgb=True,
-        mean=[
-            127.5,
-            127.5,
-            127.5,
-        ],
-        pad_val=0,
-        seg_pad_val=255,
-        size=(
-            256,
-            256,
-        ),
+    data_preprocessor=dict(size=crop_size),
         std=[
             127.5,
             127.5,
