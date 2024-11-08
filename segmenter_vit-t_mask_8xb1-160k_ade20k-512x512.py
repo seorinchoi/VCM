@@ -16,7 +16,7 @@ model = dict(
         embed_dims=192,
         final_norm=True,
         img_size=(
-            291,
+            241,
             80,
         ),
         in_channels=3,
@@ -27,7 +27,19 @@ model = dict(
         patch_size=16, #patch size 8 
         type='VisionTransformer',
         with_cls_token=True),
-    data_preprocessor=dict(size=crop_size),
+    data_preprocessor=dict(
+        bgr_to_rgb=True,
+        mean=[
+            127.5,
+            127.5,
+            127.5,
+        ],
+        pad_val=0,
+        seg_pad_val=255,
+        size=(
+            291,
+            80,
+        ),
         std=[
             127.5,
             127.5,
@@ -50,9 +62,12 @@ model = dict(
         type='SegmenterMaskTransformerHead'),
     pretrained=
     'https://download.openmmlab.com/mmsegmentation/v0.5/pretrain/segmenter/vit_tiny_p16_384_20220308-cce8c795.pth',
-    test_cfg=dict(crop_size=crop_size, mode='slide', stride=(
+    test_cfg=dict(crop_size=(
         140,
         40,
+    ), mode='slide', stride=(
+        480,
+        480,
     )),
     type='EncoderDecoder')
 
