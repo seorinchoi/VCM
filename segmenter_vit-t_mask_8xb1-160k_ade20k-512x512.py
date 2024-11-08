@@ -62,12 +62,9 @@ model = dict(
         type='SegmenterMaskTransformerHead'),
     pretrained=
     'https://download.openmmlab.com/mmsegmentation/v0.5/pretrain/segmenter/vit_tiny_p16_384_20220308-cce8c795.pth',
-    test_cfg=dict(crop_size=(
-        512,
-        512,
-    ), mode='slide', stride=(
-        480,
-        480,
+    test_cfg=dict(crop_size=crop_size, mode='slide', stride=(
+        140,
+        40,
     )),
     type='EncoderDecoder')
 
