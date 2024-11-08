@@ -4,7 +4,7 @@ _base_ = [
     'configs/_base_/default_runtime.py',
     'configs/_base_/schedules/schedule.py'
 ]
-crop_size = (512, 512)
+crop_size = (291, 80)
 data_preprocessor = dict(size=crop_size)
 checkpoint = 'https://download.openmmlab.com/mmsegmentation/v0.5/pretrain/segmenter/vit_tiny_p16_384_20220308-cce8c795.pth'  # noqa
 
