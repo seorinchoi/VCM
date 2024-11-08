@@ -24,7 +24,7 @@ model = dict(
         norm_cfg=dict(requires_grad=True, type='LN'),
         num_heads=3,
         num_layers=12,
-        patch_size=8, #patch size 8 
+        patch_size=16, #patch size 8 
         type='VisionTransformer',
         with_cls_token=True),
     data_preprocessor=dict(size=crop_size),
