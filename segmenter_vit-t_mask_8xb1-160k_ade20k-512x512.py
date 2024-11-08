@@ -63,11 +63,11 @@ model = dict(
     pretrained=
     'https://download.openmmlab.com/mmsegmentation/v0.5/pretrain/segmenter/vit_tiny_p16_384_20220308-cce8c795.pth',
     test_cfg=dict(crop_size=(
-        140,
-        40,
+        291,
+        80,
     ), mode='slide', stride=(
-        480,
-        480,
+        145,
+        40,
     )),
     type='EncoderDecoder')
 
