@@ -1,4 +1,4 @@
-# optimizer - AdamW
+'''# optimizer - AdamW
 optim_wrapper = dict(
     clip_grad=None,
     type='OptimWrapper',
@@ -12,10 +12,11 @@ optim_wrapper = dict(
             absolute_pos_embed=dict(decay_mult=0.0),
             norm=dict(decay_mult=0.0),
             relative_position_bias_table=dict(decay_mult=0.0))))
+'''
 
-'''# optimizer - SGD+Momentum
+# optimizer - SGD+Momentum
 optimizer = dict(type='SGD', lr=0.01, momentum=0.9, weight_decay=0.0005)
-optim_wrapper = dict(type='OptimWrapper', optimizer=optimizer, clip_grad=None)'''
+optim_wrapper = dict(type='OptimWrapper', optimizer=optimizer, clip_grad=None)
 
 # learning policy
 param_scheduler = [
