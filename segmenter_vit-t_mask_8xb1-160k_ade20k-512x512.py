@@ -84,7 +84,7 @@ test_evaluator = dict(
     type='IoUMetric')
 
 
-optimizer = dict(lr=0.001, weight_decay=0.0)
+optimizer = dict(lr=0.01, weight_decay=0.0)
 optim_wrapper = dict(type='OptimWrapper', optimizer=optimizer)
 val_dataloader = dict(batch_size=1)
 log_processor = dict(by_epoch=True)
