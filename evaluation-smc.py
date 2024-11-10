@@ -18,11 +18,11 @@ import cv2
 
 def evaluation(datanum, xmin, ymin, xmax, ymax):
 
-    image_dir = "./datasets/test-small/images/"
-    gt_dir = "./datasets/test-small/masks/"
-    pred_dir = "./work_dirs/Swin-Seg/batch24lr0.0005/format_results"
-    result_dir = "./work_dirs/Swin-Seg/batch24lr0.0005/eval_results"
-    resultimg_dir = "./work_dirs/Swin-Seg/batch24lr0.0005/eval_results/img"
+    image_dir = "/content/drive/MyDrive/SMC/test/images/"
+    gt_dir = "/content/drive/MyDrive/SMC/test/labels/"
+    pred_dir = "/content/drive/MyDrive/work_dirs/vit/b16lr001/format_result"
+    result_dir = "/content/drive/MyDrive/work_dirs/vit/b16lr001/eval_result"
+    resultimg_dir = "/content/drive/MyDrive/work_dirs/vit/b16lr001/eval_result/images"
 
     if not os.path.exists(result_dir):
         os.makedirs(result_dir)
