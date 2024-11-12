@@ -6,7 +6,7 @@ _base_ = [
 ]
 crop_size = (291, 80)
 data_preprocessor = dict(size=crop_size)
-checkpoint = 'https://download.openmmlab.com/mmsegmentation/v0.5/pretrain/segmenter/vit_tiny_p16_384_20220308-cce8c795.pth'  # noqa
+checkpoint = '/content/drive/MyDrive/work_dirs/vit/b16001/patch16batch16lr0.01.pth'  # noqa
 
 model = dict(
     backbone=dict(
@@ -52,7 +52,7 @@ model = dict(
         embed_dims=192,
         in_channels=192,
         loss_decode=dict(
-            loss_weight=1.0, type='CrossEntropyLoss', use_sigmoid=False),
+            loss_weight=1.0, type='DiceLoss', use_sigmoid=False),
         norm_cfg=dict(requires_grad=True, type='LN'),
         num_classes=3,
         num_heads=3,
@@ -60,8 +60,7 @@ model = dict(
         out_channels=3,
         threshold=0.3,
         type='SegmenterMaskTransformerHead'),
-    pretrained=
-    'https://download.openmmlab.com/mmsegmentation/v0.5/pretrain/segmenter/vit_tiny_p16_384_20220308-cce8c795.pth',
+    pretrained=checkpoint,
     test_cfg=dict(crop_size=(
         291,
         80,
