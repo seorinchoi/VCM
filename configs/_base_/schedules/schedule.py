@@ -22,7 +22,7 @@ optim_wrapper = dict(type='OptimWrapper', optimizer=optimizer, clip_grad=None)
 param_scheduler = [
     dict(
         type='LinearLR',  # Warm-up 스케줄러
-        start_factor=0.001, 
+        start_factor=0.01, 
         by_epoch=True,
         begin=0,
         end=5  # warm-up이 진행될 에폭 수 (예: 5 에폭 동안 warm-up 적용)
