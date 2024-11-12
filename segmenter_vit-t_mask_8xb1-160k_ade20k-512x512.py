@@ -62,6 +62,7 @@ model = dict(
         out_channels=3,
         threshold=0.3,
         type='SegmenterMaskTransformerHead'),
+    pretrained
 
     test_cfg=dict(crop_size=(
         291,
@@ -86,6 +87,7 @@ test_evaluator = dict(
 
 
 load_from=checkpoint
+#resume_from=
 
 optimizer = dict(lr=0.01, weight_decay=0.0)
 optim_wrapper = dict(type='OptimWrapper', optimizer=optimizer)
