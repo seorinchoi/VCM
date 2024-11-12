@@ -16,7 +16,7 @@ model = dict(
         embed_dims=192,
         final_norm=True,
         img_size=(
-            241,
+            291,
             80,
         ),
         in_channels=3,
