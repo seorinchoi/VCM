@@ -10,12 +10,6 @@ checkpoint = '/content/drive/MyDrive/work_dirs/vit/b16001/patch16batch16lr0.01.p
 
 model = dict(
     backbone=dict(
-        init_cfg=dict(
-            type='Pretrained',
-            checkpoint=checkpoint,
-            prefix='backbone',
-            ignore_keys=['optimizer']  # 이전 학습률 무시
-        ),
         attn_drop_rate=0.0,
         drop_path_rate=0.1,
         drop_rate=0.0,
@@ -90,6 +84,8 @@ test_evaluator = dict(
     iou_metrics=['mIoU'],
     type='IoUMetric')
 
+
+load_from=checkpoint
 
 optimizer = dict(lr=0.01, weight_decay=0.0)
 optim_wrapper = dict(type='OptimWrapper', optimizer=optimizer)
