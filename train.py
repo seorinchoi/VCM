@@ -12,6 +12,20 @@ from mmengine.runner import Runner
 from mmseg.registry import RUNNERS
 
 
+def load_checkpoint_with_meta_check(cfg):
+    """Load checkpoint and add default meta if missing."""
+    checkpoint_path = cfg.get('load_from', None)
+    if checkpoint_path:
+        checkpoint = torch.load(checkpoint_path)
+        if 'meta' not in checkpoint:
+            # Add a default meta if it doesn't exist
+            checkpoint['meta'] = {'epoch': 0, 'iter': 0}
+        # Save modified checkpoint temporarily or update cfg with this checkpoint
+        temp_checkpoint_path = 'path_to_temp_checkpoint.pth'
+        torch.save(checkpoint, temp_checkpoint_path)
+        cfg.load_from = temp_checkpoint_path
+
+
 def parse_args():
     parser = argparse.ArgumentParser(description='Train a segmentor')
     parser.add_argument('config', help='train config file path')
