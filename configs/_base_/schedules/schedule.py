@@ -21,12 +21,20 @@ optim_wrapper = dict(type='OptimWrapper', optimizer=optimizer, clip_grad=None)
 # learning policy
 param_scheduler = [
     dict(
-        type='PolyLR',
+        type='LinearLR',  # Warm-up 스케줄러
+        start_factor=0.001, 
+        by_epoch=True,
+        begin=0,
+        end=5  # warm-up이 진행될 에폭 수 (예: 5 에폭 동안 warm-up 적용)
+    ),
+    dict(
+        type='PolyLR', 
         eta_min=1e-3,
         power=0.9,
-        begin=0,
+        begin=5, 
         end=500,
-        by_epoch=True)
+        by_epoch=True
+    )
 ]
 
 # training schedule for 500 epochs
