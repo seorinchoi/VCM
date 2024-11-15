@@ -8,6 +8,8 @@ import mmseg.datasets.SMCDatasets
 from mmengine.config import Config, DictAction
 from mmengine.logging import print_log
 from mmengine.runner import Runner
+from mmengine.runner.checkpoint import load_checkpoint
+import torch
 
 from mmseg.registry import RUNNERS
 
@@ -101,6 +103,9 @@ def main():
 
     # resume training
     cfg.resume = args.resume
+
+    # Handle missing meta in checkpoint
+    load_checkpoint_with_meta_check(cfg)
 
     # build the runner from config
     if 'runner_type' not in cfg:
