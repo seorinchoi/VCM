@@ -196,7 +196,7 @@ if __name__ == "__main__":
 
             xmin = 0
             ymin = 0
-            xmax = 256
-            ymax = 256
+            xmax = 290
+            ymax = 79
 
             evaluation(datanum, xmin, ymin, xmax, ymax)
