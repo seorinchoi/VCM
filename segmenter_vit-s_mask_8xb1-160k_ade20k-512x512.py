@@ -16,6 +16,7 @@ model = dict(
         img_size=(291,80),
         embed_dims=384,
         num_heads=6,
+        patch_size=16,
     ),
     decode_head=dict(
         type='SegmenterMaskTransformerHead',
