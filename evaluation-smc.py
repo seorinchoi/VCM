@@ -8,8 +8,8 @@ import matplotlib.pyplot as plt
 import time
 
 # Directory Settings
-image_dir = "./SMC/Meniscus/test/images"
-gt_dir = "./SMC/Meniscus/test/labels"
+image_dir = "/content/drive/MyDrive/SMC/test/images"
+gt_dir = "/content/drive/MyDrive/SMC/test/labesl"
 pred_dir =  './SMC/Segmenter-swin/patch2/Focal/batch16/format_results'
 result_dir = "./SMC/Segmenter-swin/patch2/Focal/batch16/eval_results"
 resultimg_dir = "./SMC/Segmenter-swin/patch2/Focal/batch16/eval_results/img"
