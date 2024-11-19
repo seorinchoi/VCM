@@ -1,9 +1,10 @@
 _base_ = [
-    '../_base_/models/segmenter_vit-b16_mask.py',
-    '../_base_/datasets/ade20k.py', '../_base_/default_runtime.py',
-    '../_base_/schedules/schedule_160k.py'
+    'configs/_base_/models/segmenter_vit-b16_mask.py',
+    'configs/_base_/datasets/SMC.py',
+    'configs/_base_/default_runtime.py',
+    'configs/_base_/schedules/schedule.py'
 ]
-crop_size = (512, 512)
+crop_size = (291, 80)
 data_preprocessor = dict(size=crop_size)
 checkpoint = 'https://download.openmmlab.com/mmsegmentation/v0.5/pretrain/segmenter/vit_small_p16_384_20220308-410f6037.pth'  # noqa
 
@@ -12,17 +13,18 @@ model = dict(
     data_preprocessor=data_preprocessor,
     pretrained=checkpoint,
     backbone=dict(
-        img_size=(512, 512),
+        img_size=(291,80),
         embed_dims=384,
         num_heads=6,
     ),
     decode_head=dict(
         type='SegmenterMaskTransformerHead',
-        in_channels=384,
-        channels=384,
-        num_classes=150,
+        num_classes=3,
+        num_heads=3,
         num_layers=2,
-        num_heads=6,
+        out_channels=3,
+        threshold=0.3,
+        channels=384,
         embed_dims=384,
         dropout_ratio=0.0,
         loss_decode=dict(
