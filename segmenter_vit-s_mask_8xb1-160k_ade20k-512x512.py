@@ -30,9 +30,23 @@ model = dict(
         loss_decode=dict(
             type='CrossEntropyLoss', use_sigmoid=False, loss_weight=1.0)))
 
-optimizer = dict(lr=0.001, weight_decay=0.0)
-optim_wrapper = dict(type='OptimWrapper', optimizer=optimizer)
-train_dataloader = dict(
-    # num_gpus: 8 -> batch_size: 8
-    batch_size=1)
+train_dataloader = dict(batch_size=16) #batch-size
 val_dataloader = dict(batch_size=1)
+
+
+val_evaluator = dict(type='CustomDiceMetric', target_class_index=1,iou_metrics=['mIoU', 'mDice'])
+test_evaluator = dict(
+    format_only= True,
+    keep_results=True,
+    output_dir='',
+    iou_metrics=['mIoU'],
+    type='IoUMetric')
+
+
+#load_from=checkpoint
+#resume_from=
+
+optimizer = dict(lr=0.01, weight_decay=0.0)
+optim_wrapper = dict(type='OptimWrapper', optimizer=optimizer)
+val_dataloader = dict(batch_size=1)
+log_processor = dict(by_epoch=True)
