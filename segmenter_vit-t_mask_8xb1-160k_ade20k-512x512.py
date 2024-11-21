@@ -24,7 +24,7 @@ model = dict(
         norm_cfg=dict(requires_grad=True, type='LN'),
         num_heads=3,
         num_layers=12,
-        patch_size=16, #patch size 8 
+        patch_size=8, #patch size 8 
         type='VisionTransformer',
         with_cls_token=True),
     data_preprocessor=dict(
@@ -52,8 +52,7 @@ model = dict(
         embed_dims=192,
         in_channels=192,
     loss_decode=[
-        dict(type='CrossEntropyLoss', loss_name='loss_ce', use_sigmoid=False, loss_weight=1.0),
-        dict(type='DiceLoss', loss_name='loss_dice', loss_weight=3.0)
+        dict(type='FocalLoss', use_sigmoid=True, loss_weight=1.0),
     ],
         norm_cfg=dict(requires_grad=True, type='LN'),
         num_classes=3,
