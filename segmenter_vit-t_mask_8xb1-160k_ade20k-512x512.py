@@ -51,9 +51,8 @@ model = dict(
         dropout_ratio=0.0,
         embed_dims=192,
         in_channels=192,
-    loss_decode=[
-        dict(type='FocalLoss', use_sigmoid=True, loss_weight=1.0),
-    ],
+        loss_decode=dict(
+            type='FocalLoss', use_sigmoid=True, loss_weight=1.0, gamma=1.5, alpha=[0.25, 0.75]),#Focal Loss
         norm_cfg=dict(requires_grad=True, type='LN'),
         num_classes=2,
         num_heads=2,
