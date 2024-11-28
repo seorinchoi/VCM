@@ -19,7 +19,7 @@ model = dict(
             291,
             80,
         ),
-        in_channels=2,
+        in_channels=3,
         interpolate_mode='bicubic',
         norm_cfg=dict(requires_grad=True, type='LN'),
         num_heads=2,
