@@ -6,7 +6,7 @@ _base_ = [
 ]
 crop_size = (291, 80)
 data_preprocessor = dict(size=crop_size)
-checkpoint = 'https://download.openmmlab.com/mmsegmentation/v0.5/pretrain/segmenter/vit_tiny_p16_384_20220308-cce8c795.pth'  # noqa
+checkpoint = '/content/VCMI/vit_tiny_p16_384_20220308-cce8c795.pth'  # noqa
 
 model = dict(
     backbone=dict(
@@ -60,7 +60,7 @@ model = dict(
         out_channels=2,
         threshold=0.3,
         type='SegmenterMaskTransformerHead'),
-    pretrained=checkpoint,
+    #pretrained=checkpoint,
 
     test_cfg=dict(crop_size=(
         291,
