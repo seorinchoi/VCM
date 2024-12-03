@@ -22,7 +22,7 @@ model = dict(
         in_channels=3,
         interpolate_mode='bicubic',
         norm_cfg=dict(requires_grad=True, type='LN'),
-        num_heads=2,
+        num_heads=3,
         num_layers=12,
         patch_size=16, #patch size 16
         type='VisionTransformer',
@@ -54,10 +54,10 @@ model = dict(
         loss_decode=dict(
             type='FocalLoss', use_sigmoid=True, loss_weight=1.0, gamma=1.5, alpha=[0.25, 0.75]),#Focal Loss
         norm_cfg=dict(requires_grad=True, type='LN'),
-        num_classes=2,
-        num_heads=2,
+        num_classes=3,
+        num_heads=3,
         num_layers=2,
-        out_channels=2,
+        out_channels=3,
         threshold=0.3,
         type='SegmenterMaskTransformerHead'),
     #pretrained=checkpoint,
