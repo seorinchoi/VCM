@@ -6,7 +6,7 @@ _base_ = [
 ]
 crop_size = (291, 80)
 data_preprocessor = dict(size=crop_size)
-checkpoint = '/content/drive/MyDrive/work_dirs/vit-t/segmenter_vit-t_mask_8x1_512x512_160k_ade20k_20220105_151706-ffcf7509.pth'  # noqa
+checkpoint = '/content/drive/MyDrive/work_dirs/vit-t/segmenter_vit-t_mask_8x1_512x512_160k_ade20k_20220105_151706-ffcf7509.pth' # noqa
 
 model = dict(
     backbone=dict(
@@ -52,14 +52,14 @@ model = dict(
         embed_dims=192,
         in_channels=192,
         loss_decode=[
-        dicttype=('FocalLoss', loss_name='loss_focal', use_sigmoid=True, loss_weight=1.0, gamma=1.5, alpha=[0.25, 0.75]),
-        dict(type='DiceLoss', loss_name='loss_dice', loss_weight=3.0)
+        dict(type='CrossEntropyLoss', use_sigmoid=False, loss_weight=0.4),
+        dict(type='DiceLoss', loss_name='loss_dice', use_sigmoid=False, loss_weight=3.0)
     ],
         norm_cfg=dict(requires_grad=True, type='LN'),
-        num_classes=3,
+        num_classes=2,
         num_heads=3,
         num_layers=2,
-        out_channels=3,
+        out_channels=2,
         threshold=0.3,
         type='SegmenterMaskTransformerHead'),
     #pretrained=checkpoint,
@@ -86,10 +86,10 @@ test_evaluator = dict(
     type='IoUMetric')
 
 
-#load_from=checkpoint
+load_from=checkpoint
 #resume_from=
 
-optimizer = dict(lr=0.01, weight_decay=0.0)
+optimizer = dict(lr=0.001, weight_decay=0.0)
 optim_wrapper = dict(type='OptimWrapper', optimizer=optimizer)
 val_dataloader = dict(batch_size=1)
 log_processor = dict(by_epoch=True)
