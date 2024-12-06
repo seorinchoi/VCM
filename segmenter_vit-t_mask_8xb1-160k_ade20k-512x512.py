@@ -6,7 +6,7 @@ _base_ = [
 ]
 crop_size = (291, 80)
 data_preprocessor = dict(size=crop_size)
-checkpoint = '/content/VCMI/vit_tiny_p16_384_20220308-cce8c795.pth'  # noqa
+checkpoint = '/content/drive/MyDrive/work_dirs/vit-t/segmenter_vit-t_mask_8x1_512x512_160k_ade20k_20220105_151706-ffcf7509.pth'  # noqa
 
 model = dict(
     backbone=dict(
