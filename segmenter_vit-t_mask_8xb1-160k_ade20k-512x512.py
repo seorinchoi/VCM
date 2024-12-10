@@ -6,7 +6,7 @@ _base_ = [
 ]
 crop_size = (291, 80)
 data_preprocessor = dict(size=crop_size)
-checkpoint = '/content/drive/MyDrive/work_dirs/vit-t/segmenter_vit-t_mask_8x1_512x512_160k_ade20k_20220105_151706-ffcf7509.pth' # noqa
+checkpoint = 'https://download.openmmlab.com/mmsegmentation/v0.5/pretrain/segmenter/vit_tiny_p16_384_20220308-cce8c795.pth'  # noqa
 
 model = dict(
     backbone=dict(
@@ -16,8 +16,8 @@ model = dict(
         embed_dims=192,
         final_norm=True,
         img_size=(
-            291,
             80,
+            291,
         ),
         in_channels=3,
         interpolate_mode='bicubic',
@@ -37,8 +37,8 @@ model = dict(
         pad_val=0,
         seg_pad_val=255,
         size=(
-            291,
             80,
+            291,
         ),
         std=[
             127.5,
@@ -65,11 +65,11 @@ model = dict(
     #pretrained=checkpoint,
 
     test_cfg=dict(crop_size=(
-        291,
         80,
+        291,
     ), mode='slide', stride=(
-        145,
-        40,
+        80,
+        291,
     )),
     type='EncoderDecoder')
 
@@ -86,10 +86,10 @@ test_evaluator = dict(
     type='IoUMetric')
 
 
-load_from=checkpoint
+#load_from=checkpoint
 #resume_from=
 
-optimizer = dict(lr=0.001, weight_decay=0.0)
+optimizer = dict(lr=0.01, weight_decay=0.0)
 optim_wrapper = dict(type='OptimWrapper', optimizer=optimizer)
 val_dataloader = dict(batch_size=1)
 log_processor = dict(by_epoch=True)
