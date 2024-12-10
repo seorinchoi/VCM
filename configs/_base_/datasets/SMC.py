@@ -7,13 +7,13 @@ test_mask_dir = 'labels'
 img_dir = 'train/images'
 ann_dir = 'train/labels'
 
-crop_size = (291,80)
+crop_size = (80,291)
 
 train_pipeline = [
     dict(type='LoadImageFromFile'),
     dict(type='LoadAnnotations', reduce_zero_label=False),
-    dict(type='RandomResize', scale=(291, 80), ratio_range=(0.5, 2.0), keep_ratio=True),
-    dict(type='RandomCrop', crop_size=(291, 80), cat_max_ratio=0.75),
+    dict(type='RandomResize', scale=(80, 291), ratio_range=(0.5, 2.0), keep_ratio=True),
+    dict(type='RandomCrop', crop_size=(80, 291), cat_max_ratio=0.75),
     dict(type='RandomFlip', prob=0.5),
     dict(type='PhotoMetricDistortion'),
     dict(type='PackSegInputs'),
@@ -22,7 +22,7 @@ train_pipeline = [
 # validation 파이프라인 설정
 val_pipeline = [
     dict(type='LoadImageFromFile'),
-    dict(type='Resize', scale=(291, 80), keep_ratio=True),
+    dict(type='Resize', scale=(80, 291), keep_ratio=True),
     dict(type='LoadAnnotations', reduce_zero_label=False),  
     dict(type='PackSegInputs'),
 ]
