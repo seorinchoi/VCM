@@ -52,6 +52,7 @@ train_dataloader = dict(
         pipeline=train_pipeline,
         reduce_zero_label=False,  # 여기서 reduce_zero_label 설정
         ann_file='splits/train.txt', 
+        ignore_index=255,
     ),
     num_workers=4,
     persistent_workers=True,
@@ -66,6 +67,7 @@ val_dataloader = dict(
         pipeline=val_pipeline,
         reduce_zero_label=False,  # 여기서 reduce_zero_label 설정
         ann_file='splits/val.txt',
+        ignore_index=255,
     ),
     num_workers=4,
     persistent_workers=True,
@@ -79,6 +81,8 @@ test_dataloader =  dict(
         data_prefix=dict(img_path=test_img_dir, seg_map_path=test_mask_dir),
         pipeline=test_pipeline,
         reduce_zero_label=False,  # 여기서 reduce_zero_label 설정
+        ann_file='splits/test.txt',
+        ignore_index=255,
     ),
     num_workers=4,
     persistent_workers=True,
