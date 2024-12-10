@@ -15,10 +15,7 @@ model = dict(
         drop_rate=0.0,
         embed_dims=192,
         final_norm=True,
-        img_size=(
-            80,
-            291,
-        ),
+        img_size=crop_size,
         in_channels=3,
         interpolate_mode='bicubic',
         norm_cfg=dict(requires_grad=True, type='LN'),
@@ -36,10 +33,7 @@ model = dict(
         ],
         pad_val=0,
         seg_pad_val=255,
-        size=(
-            80,
-            291,
-        ),
+        size=crop_size,
         std=[
             127.5,
             127.5,
@@ -89,7 +83,7 @@ test_evaluator = dict(
 #load_from=checkpoint
 #resume_from=
 
-optimizer = dict(lr=0.01, weight_decay=0.0)
+optimizer = dict(lr=0.001, weight_decay=0.0)
 optim_wrapper = dict(type='OptimWrapper', optimizer=optimizer)
 val_dataloader = dict(batch_size=1)
 log_processor = dict(by_epoch=True)
