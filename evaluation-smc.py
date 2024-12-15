@@ -9,7 +9,7 @@ import time
 
 # Directory Settings
 image_dir = "/content/drive/MyDrive/SMC/test/images"
-gt_dir = "/content/drive/MyDrive/SMC/test/labesl"
+gt_dir = "/content/drive/MyDrive/SMC/test/labels"
 pred_dir =  './SMC/Segmenter-swin/patch2/Focal/batch16/format_results'
 result_dir = "./SMC/Segmenter-swin/patch2/Focal/batch16/eval_results"
 resultimg_dir = "./SMC/Segmenter-swin/patch2/Focal/batch16/eval_results/img"
