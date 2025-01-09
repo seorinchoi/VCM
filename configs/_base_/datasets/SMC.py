@@ -1,9 +1,9 @@
 # 데이터셋 타입과 경로를 수정
 dataset_type = 'SMCDatasets'
 data_root = '/content/drive/MyDrive/SMC/'
-test_data_root = '/content/drive/MyDrive/SMC/test/'
-test_img_dir = 'images'
-test_mask_dir = 'labels'
+test_data_root = '/content/drive/MyDrive/SMC/'
+test_img_dir = 'test/images'
+test_mask_dir = 'test/labels'
 img_dir = 'train/images'
 ann_dir = 'train/labels'
 
