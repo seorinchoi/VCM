@@ -1,85 +1,83 @@
 # 데이터셋 타입과 경로를 수정
 dataset_type = 'SMCDatasets'
 data_root = '/content/drive/MyDrive/SMC/'
-test_data_root = '/content/drive/MyDrive/SMC/'
-test_img_dir = 'test/images'
-test_mask_dir = 'test/labels'
-img_dir = 'train/images'
-ann_dir = 'train/labels'
 
-crop_size = (80,291)
 
-#train, validation 파이프라인
+# ann_file 경로
+fold_id = 5
+fold_train_split_txt = f'fold_splits/fold{fold_id}_train.txt'
+fold_val_split_txt = f'fold_splits/fold{fold_id}_val.txt'
+fold_test_split_txt = f'fold_splits/fold{fold_id}_test.txt'
+
+
+# Fold-specific data_prefix 설정
+img_dir = 'images/'
+ann_dir = 'labels/'
+
+crop_size = (80, 291)
+
+# Train 파이프라인
 train_pipeline = [
     dict(type='LoadImageFromFile'),
-    dict(type='LoadAnnotations', reduce_zero_label=False ),
+    dict(type='LoadAnnotations', reduce_zero_label=False),
     dict(type='PackSegInputs'),
 ]
 
+# Validation 파이프라인
 val_pipeline = [
     dict(type='LoadImageFromFile'),
     dict(type='LoadAnnotations', reduce_zero_label=False),
     dict(type='PackSegInputs'),
 ]
 
-# test 파이프라인 설정
+# Test 파이프라인 설정
 test_pipeline = val_pipeline
-img_ratios = [0.5, 0.75, 1.0, 1.25, 1.5]
-tta_pipeline = [
-    dict(type='LoadImageFromFile', backend_args=None),
-    dict(
-        type='TestTimeAug',
-        transforms=[
-            [
-                dict(type='Resize', scale_factor=r, keep_ratio=True)
-                for r in img_ratios
-            ],
-            [
-                dict(type='RandomFlip', prob=0., direction='horizontal'),
-                dict(type='RandomFlip', prob=1., direction='horizontal')
-            ],
-            [dict(type='LoadAnnotations')],
-            [dict(type='PackSegInputs')]
-        ]
-    )
-]
+
+# Train 데이터 로더
 train_dataloader = dict(
-    batch_size=8, #배치사이즈 24
+    batch_size=32,
     dataset=dict(
-        type='SMCDatasets',
+        type=dataset_type,
         data_root=data_root,
+        ann_file=fold_train_split_txt,
         data_prefix=dict(img_path=img_dir, seg_map_path=ann_dir),
         pipeline=train_pipeline,
-        reduce_zero_label=False,  # 여기서 reduce_zero_label 설정
-        ann_file='splits/train.txt', 
+        reduce_zero_label=False,
+        ignore_index=255,  # reduce_zero_label 설정
     ),
     num_workers=4,
     persistent_workers=True,
     sampler=dict(shuffle=True, type='DefaultSampler')
 )
+
+# Validation 데이터 로더
 val_dataloader = dict(
     batch_size=1,
     dataset=dict(
-        type='SMCDatasets',
+        type=dataset_type,
         data_root=data_root,
+        ann_file=fold_val_split_txt,
         data_prefix=dict(img_path=img_dir, seg_map_path=ann_dir),
         pipeline=val_pipeline,
-        reduce_zero_label=False,  # 여기서 reduce_zero_label 설정
-        ann_file='splits/val.txt',
+        reduce_zero_label=False,
+        ignore_index=255,
     ),
     num_workers=4,
     persistent_workers=True,
     sampler=dict(shuffle=False, type='DefaultSampler')
 )
-test_dataloader =  dict(
+
+# Test 데이터 로더
+test_dataloader = dict(
     batch_size=1,
     dataset=dict(
-        type='SMCDatasets',
-        data_root=test_data_root,
-        data_prefix=dict(img_path=test_img_dir, seg_map_path=test_mask_dir),
+        type=dataset_type,
+        data_root=data_root,
+        ann_file=fold_test_split_txt, 
+        data_prefix=dict(img_path=img_dir, seg_map_path=ann_dir),
         pipeline=test_pipeline,
-        reduce_zero_label=False,  # 여기서 reduce_zero_label 설정
-        ann_file='splits/test.txt',
+        reduce_zero_label=False,
+        ignore_index=255,
     ),
     num_workers=4,
     persistent_workers=True,
