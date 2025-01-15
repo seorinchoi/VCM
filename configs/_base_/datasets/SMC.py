@@ -11,8 +11,9 @@ fold_test_split_txt = f'fold_splits/fold{fold_id}_test.txt'
 
 
 # Fold-specific data_prefix 설정
-img_dir = 'images/'
-ann_dir = 'labels/'
+img_dir = 'images'
+ann_dir = 'labels'
+test_ann_dir="test/labels"
 
 crop_size = (80, 291)
 
@@ -72,7 +73,7 @@ test_dataloader = dict(
         type=dataset_type,
         data_root=data_root,
         ann_file=fold_test_split_txt, 
-        data_prefix=dict(img_path=img_dir, seg_map_path=ann_dir),
+        data_prefix=dict(img_path=img_dir, seg_map_path=test_ann_dir),
         pipeline=test_pipeline,
         reduce_zero_label=False,
     ),
