@@ -43,7 +43,6 @@ train_dataloader = dict(
         data_prefix=dict(img_path=img_dir, seg_map_path=ann_dir),
         pipeline=train_pipeline,
         reduce_zero_label=False,
-        ignore_index=255,  # reduce_zero_label 설정
     ),
     num_workers=4,
     persistent_workers=True,
@@ -60,7 +59,6 @@ val_dataloader = dict(
         data_prefix=dict(img_path=img_dir, seg_map_path=ann_dir),
         pipeline=val_pipeline,
         reduce_zero_label=False,
-        ignore_index=255,
     ),
     num_workers=4,
     persistent_workers=True,
@@ -77,7 +75,6 @@ test_dataloader = dict(
         data_prefix=dict(img_path=img_dir, seg_map_path=ann_dir),
         pipeline=test_pipeline,
         reduce_zero_label=False,
-        ignore_index=255,
     ),
     num_workers=4,
     persistent_workers=True,
