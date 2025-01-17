@@ -1,6 +1,6 @@
 # 데이터셋 타입과 경로를 수정
 dataset_type = 'SMCDatasets'
-data_root = '/content/drive/MyDrive/SMC-fold/data/'
+data_root = '/content/drive/MyDrive/SMC-fold/'
 
 
 # ann_file 경로
