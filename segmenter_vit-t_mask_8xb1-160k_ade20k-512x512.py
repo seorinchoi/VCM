@@ -47,16 +47,16 @@ model = dict(
         in_channels=192,
          loss_decode=[
             dict(type='DiceLoss', use_sigmoid=False, loss_weight=2.0),
-            dict(type='CrossEntropyLoss', use_sigmoid=False, loss_weight=1.0, class_weight=[0.1,0.9] )
+            dict(type='CrossEntropyLoss', use_sigmoid=False, loss_weight=1.0, class_weight=[0.1,0.9,0] )
     ],
         norm_cfg=dict(requires_grad=True, type='LN'),
-        num_classes=2,
+        num_classes=3,
         num_heads=3,
         num_layers=2,
-        out_channels=2,
+        out_channels=3,
         threshold=0.3,
         type='SegmenterMaskTransformerHead'),
-    #pretrained=checkpoint,
+    pretrained=checkpoint,
 
     test_cfg=dict(crop_size=(
         80,
@@ -67,7 +67,7 @@ model = dict(
     )),
     type='EncoderDecoder')
 
-train_dataloader = dict(batch_size=16) #batch-size
+train_dataloader = dict(batch_size=24) #batch-size
 val_dataloader = dict(batch_size=1)
 
 
@@ -83,7 +83,7 @@ test_evaluator = dict(
 #load_from=checkpoint
 #resume_from=
 
-optimizer = dict(lr=0.001, weight_decay=0.0)
+optimizer = dict(lr=0.0001, weight_decay=0.0)
 optim_wrapper = dict(type='OptimWrapper', optimizer=optimizer)
 val_dataloader = dict(batch_size=1)
 log_processor = dict(by_epoch=True)
